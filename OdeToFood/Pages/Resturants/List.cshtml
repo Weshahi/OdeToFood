@@ -23,26 +23,33 @@
 <table class="table">
     @foreach (var resturant in Model.Resturants)
     {
-        <tr>
-            <td>@resturant.Name</td>
-            <td>@resturant.Location</td>
-            <td>@resturant.Cuisine</td>
-            <td>
-                <a class="btn btn-lg" asp-page="./Detail" asp-route-resturantId="@resturant.Id">
-                    <i class="glyphicon glyphicon-zoom-in"></i>
-                </a>
-            </td>
-            <td>
-                <a class="btn btn-lg" asp-page="./Edit" asp-route-resturantId="@resturant.Id">
-                    <i class="glyphicon glyphicon-edit"></i>
-                </a>
-            </td>
-        </tr>
+    <tr>
+        <td>@resturant.Name</td>
+        <td>@resturant.Location</td>
+        <td>@resturant.Cuisine</td>
+        <td>
+            <a class="btn btn-lg" asp-page="./Detail" asp-route-resturantId="@resturant.Id">
+                <i class="glyphicon glyphicon-zoom-in"></i>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg" asp-page="./Edit" asp-route-resturantId="@resturant.Id">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg" asp-page="./Delete" asp-route-resturantId="@resturant.Id">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </td>
+    </tr>
     }
 </table>
 
 <a asp-page="./Edit" class="btn btn-primary">Add New</a>
 
+@section footer{ 
 <div>
     @Model.Message
 </div>
+    }
