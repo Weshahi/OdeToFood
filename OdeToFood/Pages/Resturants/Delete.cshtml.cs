@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OdeToFood.Core;
 using OdeToFood.Data;
 
-namespace OdeToFood
+namespace OdeToFood.Resturants
 {
     public class DeleteModel : PageModel
     {
@@ -17,19 +18,19 @@ namespace OdeToFood
         {
             this.restaurantData = restaurantData;
         }
-        public IActionResult OnGet(int restaurantId)
+        public IActionResult OnGet(int resturantId)
         {
-            Restaurant = restaurantData.GetById(restaurantId);
+            Restaurant = restaurantData.GetById(resturantId);
             if (Restaurant == null)
                 return RedirectToPage("./NotFound");
             return Page();
         }
-        public IActionResult OnPost(int restaurantId)
+        public IActionResult OnPost(int resturantId)
         {
-            var restaurant =  restaurantData.Delete(restaurantId);
+            var restaurant = restaurantData.Delete(resturantId);
             restaurantData.Commit();
 
-            if(restaurant == null)
+            if (restaurant == null)
                 return RedirectToPage("./NotFound");
             TempData["Message"] = $"{restaurant.Name} deleted";
             return RedirectToPage("./List");

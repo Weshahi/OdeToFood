@@ -42,6 +42,11 @@ namespace OdeToFood.Data
             return Context.Restaurants.FirstOrDefault(x => x.Id == id);
         }
 
+        public int GetCountOfRestaurants()
+        {
+            return Context.Restaurants.Count();
+        }
+
         public IEnumerable<Restaurant> GetRestaurantsByName(string name)
         {
             var query = from res in Context.Restaurants
